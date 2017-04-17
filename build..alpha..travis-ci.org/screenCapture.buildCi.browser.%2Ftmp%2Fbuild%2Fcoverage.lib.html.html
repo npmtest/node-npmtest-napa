@@ -1,0 +1,802 @@
+<html lang="en"><head>
+    <title>Code coverage report for node-npmtest-napa/node_modules/napa/lib/pkg.js</title>
+    <meta charset="utf-8">
+    <style>
+        body, html {
+            margin:0; padding: 0;
+        }
+        body {
+            font-family: Arial, Helvetica;
+            font-size: 10pt;
+        }
+        div.header, div.footer {
+            background: #eee;
+            padding: 1em;
+        }
+        div.header {
+            height: 160px;
+            padding: 0 1em 0 1em;
+            z-index: 100;
+            position: fixed;
+            top: 0;
+            border-bottom: 1px solid #666;
+            width: 100%;
+        }
+        div.footer {
+            border-top: 1px solid #666;
+        }
+        div.body {
+            margin-top: 170px;
+        }
+        div.meta {
+            font-size: 90%;
+            text-align: center;
+        }
+        h1, h2, h3 {
+            font-weight: normal;
+        }
+        h1 {
+            font-size: 12pt;
+        }
+        h2 {
+            font-size: 10pt;
+        }
+        pre {
+            font-family: Menlo, Monaco, Consolas, Courier New, monospace;
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+            tab-size: 2;
+        }
+
+        div.path { font-size: 110%; }
+        div.path a:link, div.path a:visited { color: #000; }
+        table.coverage { border-collapse: collapse; margin:0; padding: 0 }
+
+        table.coverage td {
+            margin: 0;
+            padding: 0;
+            color: #111;
+            vertical-align: top;
+        }
+        table.coverage td.line-count {
+            width: 50px;
+            text-align: right;
+            padding-right: 5px;
+        }
+        table.coverage td.line-coverage {
+            color: #777 !important;
+            text-align: right;
+            border-left: 1px solid #666;
+            border-right: 1px solid #666;
+        }
+
+        table.coverage td.text {
+        }
+
+        table.coverage td span.cline-any {
+            display: inline-block;
+            padding: 0 5px;
+            width: 40px;
+        }
+        table.coverage td span.cline-neutral {
+            background: #eee;
+        }
+        table.coverage td span.cline-yes {
+            background: #b5d592;
+            color: #999;
+        }
+        table.coverage td span.cline-no {
+            background: #fc8c84;
+        }
+
+        .cstat-yes { color: #111; }
+        .cstat-no { background: #fc8c84; color: #111; }
+        .fstat-no { background: #ffc520; color: #111 !important; }
+        .cbranch-no { background:  yellow !important; color: #111; }
+
+        .cstat-skip { background: #ddd; color: #111; }
+        .fstat-skip { background: #ddd; color: #111 !important; }
+        .cbranch-skip { background: #ddd !important; color: #111; }
+
+        .missing-if-branch {
+            display: inline-block;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: black;
+            color: yellow;
+        }
+
+        .skip-if-branch {
+            display: none;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: #ccc;
+            color: white;
+        }
+
+        .missing-if-branch .typ, .skip-if-branch .typ {
+            color: inherit !important;
+        }
+
+        .entity, .metric { font-weight: bold; }
+        .metric { display: inline-block; border: 1px solid #333; padding: 0.3em; background: white; }
+        .metric small { font-size: 80%; font-weight: normal; color: #666; }
+
+        div.coverage-summary table { border-collapse: collapse; margin: 3em; font-size: 110%; }
+        div.coverage-summary td, div.coverage-summary table  th { margin: 0; padding: 0.25em 1em; border-top: 1px solid #666; border-bottom: 1px solid #666; }
+        div.coverage-summary th { text-align: left; border: 1px solid #666; background: #eee; font-weight: normal; }
+        div.coverage-summary th.file { border-right: none !important; }
+        div.coverage-summary th.pic { border-left: none !important; text-align: right; }
+        div.coverage-summary th.pct { border-right: none !important; }
+        div.coverage-summary th.abs { border-left: none !important; text-align: right; }
+        div.coverage-summary td.pct { text-align: right; border-left: 1px solid #666; }
+        div.coverage-summary td.abs { text-align: right; font-size: 90%; color: #444; border-right: 1px solid #666; }
+        div.coverage-summary td.file { text-align: right; border-left: 1px solid #666; white-space: nowrap;  }
+        div.coverage-summary td.pic { min-width: 120px !important;  }
+        div.coverage-summary a:link { color: #000; }
+        div.coverage-summary a:visited { color: #333; }
+        div.coverage-summary tfoot td { border-top: 1px solid #666; }
+
+        div.coverage-summary .yui3-datatable-sort-indicator, div.coverage-summary .dummy-sort-indicator {
+            height: 10px;
+            width: 7px;
+            display: inline-block;
+            margin-left: 0.5em;
+        }
+        div.coverage-summary .yui3-datatable-sort-indicator {
+            background: no-repeat scroll 0 0 transparent;
+        }
+        div.coverage-summary .yui3-datatable-sorted .yui3-datatable-sort-indicator {
+            background-position: 0 -20px;
+        }
+        div.coverage-summary .yui3-datatable-sorted-desc .yui3-datatable-sort-indicator {
+            background-position: 0 -10px;
+        }
+
+        .high { background: #b5d592 !important; }
+        .medium { background: #ffe87c !important; }
+        .low { background: #fc8c84 !important; }
+
+        span.cover-fill, span.cover-empty {
+            display:inline-block;
+            border:1px solid #444;
+            background: white;
+            height: 12px;
+        }
+        span.cover-fill {
+            background: #ccc;
+            border-right: 1px solid #444;
+        }
+        span.cover-empty {
+            background: white;
+            border-left: none;
+        }
+        span.cover-full {
+            border-right: none !important;
+        }
+        pre.prettyprint {
+            border: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+        .com { color: #999 !important; }
+        .ignore-none { color: #999; font-weight: normal; }
+
+    </style>
+</head>
+<body>
+<div class="header low">
+    <h1 style="font-weight: bold;">
+        <a href="https://github.com/npmtest/node-npmtest-napa">npmtest-napa (v0.0.1)</a>
+    </h1>
+    <h1>Code coverage report for <span class="entity">node-npmtest-napa/node_modules/napa/lib/pkg.js</span></h1>
+    <h2>
+        
+        Statements: <span class="metric">17.83% <small>(23 / 129)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Branches: <span class="metric">0% <small>(0 / 66)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Functions: <span class="metric">0% <small>(0 / 17)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Lines: <span class="metric">20.35% <small>(23 / 113)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../../../../index.html">All files</a> » <a href="index.html">node-npmtest-napa/node_modules/napa/lib/</a> » pkg.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tbody><tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">var path = require('path')
+var fs = require('fs')
+var spawn = require('child_process').spawn
+var cache = require('npm-cache-filename')
+var log = require('npmlog')
+var rimraf = require('rimraf')
+var Download = require('download')
+var tmp = path.join(require('os').tmpdir(), 'cache')
+var mkdirp = require('mkdirp')
+var pack = require('tar-pack').pack
+var unpack = require('tar-pack').unpack
+var loadJsonFile = require('load-json-file')
+var writeJsonFile = require('write-json-file')
+&nbsp;
+<span class="fstat-no" title="function not covered">function NapaPkg (url, name, opts) {</span>
+<span class="cstat-no" title="statement not covered">  if (!(this instanceof NapaPkg)) <span class="cstat-no" title="statement not covered">return new NapaPkg(url, name, opts)</span></span>
+<span class="cstat-no" title="statement not covered">  var self = this</span>
+<span class="cstat-no" title="statement not covered">  opts = opts || {}</span>
+<span class="cstat-no" title="statement not covered">  this.cwd = opts.cwd || process.cwd()</span>
+<span class="cstat-no" title="statement not covered">  this.log = opts.log || log</span>
+<span class="cstat-no" title="statement not covered">  if (opts['log-level']) <span class="cstat-no" title="statement not covered">this.log.level = opts['log-level']</span></span>
+<span class="cstat-no" title="statement not covered">  this._mock = opts._mock</span>
+<span class="cstat-no" title="statement not covered">  this.ref = opts.ref</span>
+<span class="cstat-no" title="statement not covered">  this.url = url</span>
+<span class="cstat-no" title="statement not covered">  this.name = name</span>
+<span class="cstat-no" title="statement not covered">  this.installTo = path.join(this.cwd, 'node_modules', this.name)</span>
+<span class="cstat-no" title="statement not covered">  this.useCache = (typeof opts.cache === 'undefined') || opts.cache !== false</span>
+<span class="cstat-no" title="statement not covered">  this.cacheTo = cache(</span>
+    typeof opts['cache-path'] !== 'string'
+      ? tmp
+      : path.resolve(this.cwd, opts['cache-path']),
+    this.url
+  )
+<span class="cstat-no" title="statement not covered">  this._napaResolvedKey = '_napaResolved'</span>
+<span class="cstat-no" title="statement not covered">  this.saveToPkgJson = opts.save</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered">  Object.defineProperty(self, 'installed', {</span>
+    get: <span class="fstat-no" title="function not covered">function () {</span>
+<span class="cstat-no" title="statement not covered">      var existing = path.join(self.installTo, 'package.json')</span>
+<span class="cstat-no" title="statement not covered">      return (fs.existsSync(existing) &amp;&amp; require(existing)[self._napaResolvedKey] === url)</span>
+    }
+  })
+<span class="cstat-no" title="statement not covered">  Object.defineProperty(self, 'cached', {</span>
+    get: <span class="fstat-no" title="function not covered">function () {</span> <span class="cstat-no" title="statement not covered">return fs.existsSync(self.cacheTo) }</span>
+  })
+}
+module.exports = NapaPkg
+&nbsp;
+NapaPkg.prototype.install = <span class="fstat-no" title="function not covered">function (done) {</span>
+<span class="cstat-no" title="statement not covered">  var self = this</span>
+<span class="cstat-no" title="statement not covered">  done = done || <span class="fstat-no" title="function not covered">function () {</span>}</span>
+&nbsp;
+  // Save to package.json
+<span class="cstat-no" title="statement not covered">  if (self.saveToPkgJson) <span class="cstat-no" title="statement not covered">self.save()</span></span>
+&nbsp;
+  // Do nothing if already installed
+<span class="cstat-no" title="statement not covered">  if (self.installed) <span class="cstat-no" title="statement not covered">return done()</span></span>
+&nbsp;
+<span class="fstat-no" title="function not covered">  function cb (err) {</span>
+<span class="cstat-no" title="statement not covered">    if (err) <span class="cstat-no" title="statement not covered">return done(err.message)</span></span>
+<span class="cstat-no" title="statement not covered">    self.writePackageJson(<span class="fstat-no" title="function not covered">function (err) {</span></span>
+<span class="cstat-no" title="statement not covered">      if (err) <span class="cstat-no" title="statement not covered">return done(err.message)</span></span>
+<span class="cstat-no" title="statement not covered">      if (self.useCache) {</span>
+<span class="cstat-no" title="statement not covered">        self.cache(done)</span>
+      } else {
+<span class="cstat-no" title="statement not covered">        return done()</span>
+      }
+    })
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered">  function cacheInstall () {</span>
+<span class="cstat-no" title="statement not covered">    if (typeof self._mock === 'function') {</span>
+<span class="cstat-no" title="statement not covered">      self._mock(['cache', self.url, self.name])</span>
+    } else {
+<span class="cstat-no" title="statement not covered">      self.log.info('cache', '%s into %s', self.url, self.name)</span>
+<span class="cstat-no" title="statement not covered">      fs.createReadStream(self.cacheTo)</span>
+        .pipe(unpack(self.installTo, cb))
+    }
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered">  function gitInstall () {</span>
+<span class="cstat-no" title="statement not covered">    var args = ['clone', '--depth', '1', '-q', (self.url.replace('git+', '')), self.installTo]</span>
+<span class="cstat-no" title="statement not covered">    var cmd = ['git', args]</span>
+<span class="cstat-no" title="statement not covered">    if (self.ref) <span class="cstat-no" title="statement not covered">args.splice(1, 2)</span></span>
+<span class="cstat-no" title="statement not covered">    if (typeof self._mock === 'function') {</span>
+<span class="cstat-no" title="statement not covered">      self._mock(cmd)</span>
+    } else {
+<span class="cstat-no" title="statement not covered">      self.log.info('git', '%s into %s', self.url, self.name)</span>
+<span class="cstat-no" title="statement not covered">      var git = spawn.apply(spawn, cmd)</span>
+<span class="cstat-no" title="statement not covered">      git.stderr.on('data', log.error)</span>
+<span class="cstat-no" title="statement not covered">      git.on('close', <span class="fstat-no" title="function not covered">function (code, signal) {</span></span>
+<span class="cstat-no" title="statement not covered">        var checkout</span>
+<span class="cstat-no" title="statement not covered">        if (code) <span class="cstat-no" title="statement not covered">return cb(code, signal)</span></span>
+<span class="cstat-no" title="statement not covered">        if (self.ref) {</span>
+<span class="cstat-no" title="statement not covered">          checkout = spawn('git', ['checkout', self.ref], {cwd: self.installTo})</span>
+<span class="cstat-no" title="statement not covered">          checkout.stderr.on('data', log.info)</span>
+<span class="cstat-no" title="statement not covered">          checkout.on('close', <span class="fstat-no" title="function not covered">function () {</span></span>
+<span class="cstat-no" title="statement not covered">            rimraf(path.resolve(self.installTo, '.git'), cb)</span>
+          })
+        } else {
+<span class="cstat-no" title="statement not covered">          rimraf(path.resolve(self.installTo, '.git'), cb)</span>
+        }
+      })
+    }
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered">  function downloadInstall () {</span>
+<span class="cstat-no" title="statement not covered">    if (typeof self._mock === 'function') {</span>
+<span class="cstat-no" title="statement not covered">      self._mock(['download', self.url, self.installTo])</span>
+    } else {
+<span class="cstat-no" title="statement not covered">      self.log.info('download', '%s into %s', self.url, self.name)</span>
+<span class="cstat-no" title="statement not covered">      new Download({ extract: true, strip: 1 })</span>
+        .get(self.url)
+        .dest(self.installTo)
+        .run(cb)
+    }
+  }
+&nbsp;
+  // is this a git repo url?
+<span class="cstat-no" title="statement not covered">  var gitUrls = ['git+', 'git://']</span>
+<span class="cstat-no" title="statement not covered">  var githubRepoUrls = /github\.com(?:\/[^\/]+){2}($|#)/</span>
+&nbsp;
+  // Determine which type of install we would like
+<span class="cstat-no" title="statement not covered">  rimraf(self.installTo, <span class="fstat-no" title="function not covered">function (err) {</span></span>
+<span class="cstat-no" title="statement not covered">    if (err) <span class="cstat-no" title="statement not covered">log.error(err.message)</span></span>
+<span class="cstat-no" title="statement not covered">    if (self.useCache &amp;&amp; fs.existsSync(self.cacheTo)) {</span>
+<span class="cstat-no" title="statement not covered">      return cacheInstall()</span>
+    } else <span class="cstat-no" title="statement not covered">if (gitUrls.indexOf(self.url.slice(0, 4)) !== -1) {</span>
+<span class="cstat-no" title="statement not covered">      return gitInstall()</span>
+    } else {
+<span class="cstat-no" title="statement not covered">      if (githubRepoUrls.test(self.url)) {</span>
+<span class="cstat-no" title="statement not covered">        return gitInstall()</span>
+      }
+<span class="cstat-no" title="statement not covered">      return downloadInstall()</span>
+    }
+  })
+}
+&nbsp;
+// Caches a locally installed package
+NapaPkg.prototype.cache = <span class="fstat-no" title="function not covered">function (done) {</span>
+<span class="cstat-no" title="statement not covered">  var self = this</span>
+<span class="cstat-no" title="statement not covered">  if (!this.installed) <span class="cstat-no" title="statement not covered">return done()</span></span>
+<span class="cstat-no" title="statement not covered">  mkdirp(path.dirname(self.cacheTo), <span class="fstat-no" title="function not covered">function (err) {</span></span>
+<span class="cstat-no" title="statement not covered">    if (err) <span class="cstat-no" title="statement not covered">return done(err)</span></span>
+<span class="cstat-no" title="statement not covered">    var dest = fs.createWriteStream(self.cacheTo)</span>
+<span class="cstat-no" title="statement not covered">    pack(self.installTo, {ignoreFiles: []})</span>
+      .pipe(dest)
+      .on('close', done)
+  })
+}
+&nbsp;
+// TODO: Replace this with metamorph and ability to override
+NapaPkg.prototype.writePackageJson = <span class="fstat-no" title="function not covered">function (done) {</span>
+<span class="cstat-no" title="statement not covered">  var filepath = path.join(this.installTo, 'package.json')</span>
+<span class="cstat-no" title="statement not covered">  var pkg = null</span>
+<span class="cstat-no" title="statement not covered">  if (!fs.existsSync(filepath)) {</span>
+<span class="cstat-no" title="statement not covered">    pkg = {</span>
+      name: this.name,
+      version: '0.0.0',
+      description: '-',
+      repository: {type: 'git', url: '-'},
+      readme: '-'
+    }
+  } else {
+<span class="cstat-no" title="statement not covered">    pkg = require(filepath)</span>
+  }
+<span class="cstat-no" title="statement not covered">  pkg[this._napaResolvedKey] = this.url</span>
+<span class="cstat-no" title="statement not covered">  fs.writeFile(filepath, JSON.stringify(pkg, null, 2), done)</span>
+}
+&nbsp;
+// Save to package.json
+NapaPkg.prototype.save = <span class="fstat-no" title="function not covered">function () {</span>
+<span class="cstat-no" title="statement not covered">  var self = this</span>
+<span class="cstat-no" title="statement not covered">  var pkgJson = path.join(self.cwd, 'package.json')</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered">  try {</span>
+    // Load package.json
+<span class="cstat-no" title="statement not covered">    var json = loadJsonFile.sync(pkgJson)</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered">    var exists = false</span>
+<span class="cstat-no" title="statement not covered">    if (json.napa === undefined) <span class="cstat-no" title="statement not covered">json.napa = {}</span></span>
+<span class="cstat-no" title="statement not covered">    if (json.napa[self.name] !== undefined) <span class="cstat-no" title="statement not covered">exists = true</span></span>
+<span class="cstat-no" title="statement not covered">    json.napa[self.name] = self.url</span>
+&nbsp;
+    // Write to package.json
+<span class="cstat-no" title="statement not covered">    if (!exists) <span class="cstat-no" title="statement not covered">writeJsonFile.sync(pkgJson, json, { indent: 2 })</span></span>
+  } catch (err) {
+<span class="cstat-no" title="statement not covered">    if (err) <span class="cstat-no" title="statement not covered">return self.log.error('save', 'Unable to save %s to package.json', self.name)</span></span>
+  }
+&nbsp;
+<span class="cstat-no" title="statement not covered">  if (!exists) <span class="cstat-no" title="statement not covered">self.log.info('save', '%s to package.json', self.name)</span></span>
+}
+&nbsp;
+&nbsp;</pre></td></tr>
+</tbody></table></pre>
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a> at Mon Apr 17 2017 09:52:21 GMT+0000 (UTC)</div>
+</div>
+
+
+</body></html>
