@@ -1,4 +1,7 @@
-# test coverage for  [napa (v2.3.0)](https://github.com/shama/napa)  [![npm package](https://img.shields.io/npm/v/npmtest-napa.svg?style=flat-square)](https://www.npmjs.org/package/npmtest-napa) [![travis-ci.org build-status](https://api.travis-ci.org/npmtest/node-npmtest-napa.svg)](https://travis-ci.org/npmtest/node-npmtest-napa)
+# npmtest-napa
+
+#### test coverage for  [napa (v2.3.0)](https://github.com/shama/napa)  [![npm package](https://img.shields.io/npm/v/npmtest-napa.svg?style=flat-square)](https://www.npmjs.org/package/npmtest-napa) [![travis-ci.org build-status](https://api.travis-ci.org/npmtest/node-npmtest-napa.svg)](https://travis-ci.org/npmtest/node-npmtest-napa)
+
 #### A helper for installing repos without a package.json with npm.
 
 [![NPM](https://nodei.co/npm/napa.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/napa)
