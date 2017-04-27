@@ -76,7 +76,7 @@
 <tspan x="10" y="1178">  │ │ │ │ ├── is-zip@1.0.0 </tspan>
 <tspan x="10" y="1194">  │ │ │ │ ├── stat-mode@0.2.2 </tspan>
 <tspan x="10" y="1210">  │ │ │ │ ├── through2@2.0.3 </tspan>
-<tspan x="10" y="1226">  │ │ │ │ └─┬ yauzl@2.7.0 </tspan>
+<tspan x="10" y="1226">  │ │ │ │ └─┬ yauzl@2.8.0 </tspan>
 <tspan x="10" y="1242">  │ │ │ │   ├── buffer-crc32@0.2.13 </tspan>
 <tspan x="10" y="1258">  │ │ │ │   └─┬ fd-slicer@1.0.1 </tspan>
 <tspan x="10" y="1274">  │ │ │ │     └── pend@1.2.0 </tspan>
@@ -169,7 +169,7 @@
 <tspan x="10" y="2666">  │ │ │ │ ├── filename-regex@2.0.0 </tspan>
 <tspan x="10" y="2682">  │ │ │ │ ├── is-extglob@1.0.0 </tspan>
 <tspan x="10" y="2698">  │ │ │ │ ├── is-glob@2.0.1 </tspan>
-<tspan x="10" y="2714">  │ │ │ │ ├─┬ kind-of@3.1.0 </tspan>
+<tspan x="10" y="2714">  │ │ │ │ ├─┬ kind-of@3.2.0 </tspan>
 <tspan x="10" y="2730">  │ │ │ │ │ └── is-buffer@1.1.5 </tspan>
 <tspan x="10" y="2746">  │ │ │ │ ├─┬ normalize-path@2.1.1 </tspan>
 <tspan x="10" y="2762">  │ │ │ │ │ └── remove-trailing-separator@1.0.1 </tspan>
@@ -232,7 +232,7 @@
 <tspan x="10" y="3674">  ├── npm-cache-filename@1.0.2 </tspan>
 <tspan x="10" y="3690">  ├─┬ npmlog@2.0.4 </tspan>
 <tspan x="10" y="3706">  │ ├── ansi@0.3.1 </tspan>
-<tspan x="10" y="3722">  │ ├─┬ are-we-there-yet@1.1.2 </tspan>
+<tspan x="10" y="3722">  │ ├─┬ are-we-there-yet@1.1.4 </tspan>
 <tspan x="10" y="3738">  │ │ └── delegates@1.0.0 </tspan>
 <tspan x="10" y="3754">  │ └─┬ gauge@1.2.7 </tspan>
 <tspan x="10" y="3770">  │   ├── has-unicode@2.0.1 </tspan>
@@ -249,8 +249,8 @@
 <tspan x="10" y="3946">  │   │   └── concat-map@0.0.1 </tspan>
 <tspan x="10" y="3962">  │   └── path-is-absolute@1.0.1 </tspan>
 <tspan x="10" y="3978">  ├─┬ tar-pack@3.4.0 </tspan>
-<tspan x="10" y="3994">  │ ├─┬ debug@2.6.3 </tspan>
-<tspan x="10" y="4010">  │ │ └── ms@0.7.2 </tspan>
+<tspan x="10" y="3994">  │ ├─┬ debug@2.6.5 </tspan>
+<tspan x="10" y="4010">  │ │ └── ms@0.7.3 </tspan>
 <tspan x="10" y="4026">  │ ├── fstream@1.0.11 </tspan>
 <tspan x="10" y="4042">  │ ├── fstream-ignore@1.0.5 </tspan>
 <tspan x="10" y="4058">  │ ├─┬ once@1.4.0 </tspan>
@@ -261,7 +261,7 @@
 <tspan x="10" y="4138">  └─┬ write-json-file@1.2.0 </tspan>
 <tspan x="10" y="4154">    ├─┬ sort-keys@1.1.2 </tspan>
 <tspan x="10" y="4170">    │ └── is-plain-obj@1.1.0 </tspan>
-<tspan x="10" y="4186">    └─┬ write-file-atomic@1.3.1 </tspan>
+<tspan x="10" y="4186">    └─┬ write-file-atomic@1.3.4 </tspan>
 <tspan x="10" y="4202">      ├── imurmurhash@0.1.4 </tspan>
 <tspan x="10" y="4218">      └── slide@1.1.6</tspan>
 </text>
